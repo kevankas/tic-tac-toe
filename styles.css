@@ -55,9 +55,12 @@ img
 }
 .gameboard
 {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     width: 607px;
     height: 607px;
     
