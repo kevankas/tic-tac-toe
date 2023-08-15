@@ -33,6 +33,10 @@ footer
 {
     color: #0d1117;
 }
+.winner
+{
+    background-color: orange !important;
+}
 #topUI
 {
     color: white;
@@ -54,8 +58,8 @@ img
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 606px;
-    height: 606px;
+    width: 607px;
+    height: 607px;
     
 }
 .container
@@ -81,6 +85,6 @@ a{
     width: 300px;
     height: 100px;
     border-radius: 10px;
-    border: 2px solid #black;
+    border: 2px solid black;
     font-size: 24px;
 }

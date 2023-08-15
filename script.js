@@ -43,7 +43,6 @@ function setTile()
     let column = parseInt(coords[1]);
 
     board[row][column] = currPlayer;
-    console.log(board);
 
     if (this.innerText == "")
     {
@@ -59,9 +58,16 @@ function setTile()
             currPlayer = playerOne;
 
         }
-        counter++;
-        console.log(counter);
-        if (counter == 9)
+        
+    }
+    else
+    {
+        return;
+    }
+    checkGameOver();
+
+    counter++;
+        if (counter == 9 && gameOver == false)
         {
             
             let gg = document.createElement("div");
@@ -69,13 +75,8 @@ function setTile()
             gg.innerText = "Game is a Draw.";
             gg.classList.add("gamedisplay");
             gameOver = true;
+            
         }
-    }
-    else
-    {
-        return;
-    }
-    checkGameOver();
 
 }
 
@@ -94,10 +95,15 @@ function restartingGame()
         for (let column = 0; column < 3; column++) 
         {
            board[row][column] = "";
-           console.log(board);
            let tileId = row + "-" + column;
             let tileElement = document.getElementById(tileId);
             tileElement.innerText = ""; 
+            
+            let removing = document.getElementsByClassName("winner");
+
+            for (let i = 0; i < removing.length; i++) {
+                removing[i].classList.remove("winner");
+            }
         
            
         }
@@ -129,6 +135,14 @@ function checkGameOver()
             document.getElementById("topUI").append(gg);
             gg.innerText = "Game Over! X WINS!";
             gg.classList.add("gamedisplay");
+           
+        //    for (let col = 0; col < 3; col++) {
+        //     let cellId = row + "-" + col;
+        //     let cellElement = document.getElementById(cellId);
+        //     cellElement.classList.add("winner");
+            
+        // }
+           
         } 
         else
         {
@@ -136,22 +150,34 @@ function checkGameOver()
             document.getElementById("topUI").append(gg);
             gg.innerText = "Game Over! O WINS!";
             gg.classList.add("gamedisplay");
+
+        //     for (let col = 0; col < 3; col++) {
+        //     let cellId = row + "-" + col;
+        //     let cellElement = document.getElementById(cellId);
+        //     cellElement.classList.add("winner"); 
+        // }
+        
         }
         gameOver = true;
+        return;
     }
  }
  for (let column = 0; column < 3; column++)//vertical check
  {
     if ((board[0][column] == board[1][column]) && (board[1][column] == board[2][column]) && (board[0][column] != ""))
-    {
-        console.log("winnervertical");  
-        gameOver = true;
+    { 
+        
         if (board[0][column] == "X")
         {
             let gg = document.createElement("div");
             document.getElementById("topUI").append(gg);
             gg.innerText = "Game Over! X WINS!";
             gg.classList.add("gamedisplay");
+
+            
+            
+            
+            
         } 
         else
         {
@@ -160,7 +186,11 @@ function checkGameOver()
             gg.innerText = "Game Over! O WINS!";
             gg.classList.add("gamedisplay");
         }
+        gameOver = true;
+        return;
     }
+    
+    
  }
  if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]) && board[0][0] != "") //diag winner
  {
@@ -178,8 +208,8 @@ function checkGameOver()
         gg.innerText = "Game Over! O WINS!";
         gg.classList.add("gamedisplay");
     }
-    console.log("diagwinner")
     gameOver = true;
+    return;
  }
  if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]) && board[0][2] != "") //diag winner
  {
@@ -197,7 +227,7 @@ function checkGameOver()
         gg.innerText = "Game Over! O WINS!";
         gg.classList.add("gamedisplay");
     }
-    console.log("diagwinnerx2")
     gameOver = true;
+    return;
  }
 }
