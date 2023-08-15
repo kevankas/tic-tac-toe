@@ -18,7 +18,7 @@ body, html
     background-color: gray;
     width: 200px;
     height: 200px;
-    border: 1px solid white;
+    border: 1px solid #0d1117;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,7 +85,7 @@ a{
     width: 300px;
     height: 100px;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid #0d1117;
     font-size: 24px;
 }
 
