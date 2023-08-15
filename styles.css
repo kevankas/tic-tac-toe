@@ -89,7 +89,7 @@ a{
     font-size: 24px;
 }
 
-@media (max-width: 1000px) {
+@media only screen and (max-width: 768px) {
     .gameboard
     {
         width: 310px !important;
